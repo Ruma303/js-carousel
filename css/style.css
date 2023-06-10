@@ -1,0 +1,110 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	height: 100vh;
+}
+
+/* Slider */
+
+#slider {
+    height: 100%;
+    max-height: 30rem;
+}
+
+#slider-viewer {
+    max-width: 60rem;
+    height: 30rem;
+}
+
+
+
+/* Immagini slider */
+
+.featured-img {
+    display: none;
+    max-height: 30rem;
+    position: relative;
+    width: 60rem;
+    height: auto;
+}
+
+.caption-container {
+    position: absolute;
+}
+
+
+.img-title{
+    font-size: 2.5rem;
+    color: white;
+    display: none;
+    z-index: 6;
+}
+
+.img-location{
+    color: white;
+    display: none;
+    z-index: 6;
+}
+
+.active {
+    display: block;
+}
+
+
+/* Thumbs */
+#thumbs {
+    height: 100%;
+    width: 20rem;
+    position: relative;
+}
+
+/* Classe del singolo thumb */
+.thumb-img {
+    flex: 25% 0 0;
+    filter: brightness(60%);
+    max-height: calc(100% / 4);
+}
+
+.thumb-img:hover {
+    border: 4px solid grey;
+}
+
+.thumb-active {
+    filter: brightness(100%);
+    border: 4px solid grey;
+}
+
+#controls {
+    position: absolute;
+    z-index: 10;
+    height: 100%;
+    padding: 1rem 0;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+
+
+/* Bottoni slider */
+.control-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: .5rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	border-radius: 100%;
+	background-color: white;
+	filter: brightness(80%);
+}
+
+.control-button:hover {
+	background-color: lightblue;
+	cursor: pointer;
+	filter: brightness(100%);
+}
+

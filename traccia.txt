@@ -1,0 +1,47 @@
+Nome Traccia: js-slider
+
+Descrizione: Ci siamo. Questa sarà una vera sfida per provare tutte le tue conoscenze di JavaScript. Molto probabilmente dovrai trovare qualche informazione sparsa su internet per completare egregiamente tutto l'esercizio. 
+
+Crea uno slider di immagini seguendo i requisiti:
+	1. Utilizza esclusivamente l'array delle immagini fornito in basso, e la cartella con le immagini fornite nell'esercizio. Non è consentito utilizzare altro materiale.
+ 	2. Crea una struttura HTML base. Lo slider deve contenere due parti: la parte sinistra è l'immagine piena da mostrare, nella parte a destra ci sono le miniature di tutte le immagini presenti nell'array.
+	3. Tutto il resto va scritto in JavaScript. Non dev'esserci scritto un solo tag <img> dentro il codice HTML. Qualsiasi immagine e sua proprietà dev'essere creata esclusivamente in JavaScript.
+	4. Dopo aver creato le immagini, occorrerà scrivere la giusta logica per mostrare solo quella selezionata nella parte sinistra dello slider, nascondendo tutte le altre; d'altra parte, nella parte destra l'immagine selezionata dovrà essere più illuminata delle altre per far capire all'utente cosa ha selezionato.
+	5. Controlla gli screen di hover e riproducili.
+	6. Infine, dovrai creare la giusta logica in modo che al click del bottone di sopra o sotto venga mostrata solo l'immagine corretta, anche illuminandola nella parte destra.
+
+Bonus 1: Qualora fossi arrivato al termine e volessi continuare ad esercitarti, aggiorna il codice in modo da mostrare sullo sfondo l'immagine corrente selezionata nello slider.
+
+Bonus 2: Il secondo bonus consiste nel modificare il codice affinchè anche cliccando sulle miniature nella parte destra (quindi non sui bottoni, ma sulle immagini), venga mostrato nello slider a sinistra (e come sfondo) l'immagine selezionata.
+
+Buon lavoro!
+
+
+
+
+Array delle immagini
+
+[
+
+{
+    image: 'wallpaper1.webp',
+    title: 'Mountains',
+    location: 'Madonna di Campiglio, Autonomous Province of Trento, Italy'
+},
+{
+    image: 'wallpaper2.webp',
+    title: 'Spiaggia rocciosa',
+    location: 'Ribeira da Janela, Portugal'
+},
+{
+    image: 'wallpaper3.webp',
+    title: 'Sopra le nuvole',
+    location: 'Mill Valley, CA, USA'
+},
+{
+    image: 'wallpaper4.webp',
+    title: 'Zebre che pascolano',
+    location: 'Etosha National Park, Namibia'
+}
+
+]
