@@ -4,8 +4,12 @@ const thumbs = document.getElementById("thumbs");
 const controls = document.getElementById("controls");
 const btnUp = document.getElementById("btn-up");
 const btnDown = document.getElementById("btn-down");
+const btnPause = document.getElementById("btn-pause");
 
 let activeIndex = 0;
+let scrollDirection = "down";
+let autoChangeImages;
+let isPaused = false; //* Aggiunto flag per il bottone Pausa
 
 //array delle immagini
 const images = [
@@ -98,6 +102,7 @@ for (let i = 0; i < images.length; i++) {
 }
 
 
+document.body.style.backgroundImage = `url('img/${images[activeIndex].image}')`; //* Immagine di background iniziale
 
 
 //% Logica dei bottoni
@@ -108,58 +113,63 @@ const listImgLocation = document.querySelectorAll('.img-location');
 const listThumbs = document.querySelectorAll('.thumb-img');
 
 
-//$ Bonus 1: Impostare lo sfondo di base
-document.body.style.backgroundImage = `url('img/${images[activeIndex].image}')`; //* Immagine di background iniziale
+//$ Funzione cambio immagine
+function changeImages() {
+    listImg[activeIndex].classList.remove('active');
+    listImgTitles[activeIndex].classList.remove('active');
+    listImgLocation[activeIndex].classList.remove('active');
+    listThumbs[activeIndex].classList.remove('thumb-active');
 
-// Bottone su
+    if (scrollDirection === "up") {
+        activeIndex--;
+        if (activeIndex < 0) {
+            activeIndex = images.length - 1;
+        }
+    } else {
+        activeIndex++;
+        if (activeIndex >= images.length) {
+            activeIndex = 0;
+        }
+    }
+
+    listImg[activeIndex].classList.add('active');
+    listImgTitles[activeIndex].classList.add('active');
+    listImgLocation[activeIndex].classList.add('active');
+    listThumbs[activeIndex].classList.add('thumb-active');
+
+    document.body.style.backgroundImage = `url('img/${images[activeIndex].image}')`;
+}
+
+autoChangeImages = setInterval(changeImages, 3000); //* Inizio scorrimento appena la pagina carica
+
+//$ Bottone su
 btnUp.addEventListener('click', function() {
-
-    listImg[activeIndex].classList.remove('active');
-    listImgTitles[activeIndex].classList.remove('active');
-    listImgLocation[activeIndex].classList.remove('active');
-    listThumbs[activeIndex].classList.remove('thumb-active');
-
-    activeIndex--;
-    if (activeIndex < 0) {
-        activeIndex = images.length - 1;
-    }
-
-    listImg[activeIndex].classList.add('active');
-    listImgTitles[activeIndex].classList.add('active');
-    listImgLocation[activeIndex].classList.add('active');
-    listThumbs[activeIndex].classList.add('thumb-active');
-
-    //$ Bonus 1: Aggiorna lo sfondo
-    document.body.style.backgroundImage = `url('img/${images[activeIndex].image}')`;
+    clearInterval(autoChangeImages);
+    scrollDirection = "up";
+    changeImages();
+    autoChangeImages = setInterval(changeImages, 3000);
 });
 
-// Bottone giù
-btnDown.addEventListener('click', function() { // Uguale, cambia solo l'activeIndex che viene incrementato invece che decrementato.
-
-    listImg[activeIndex].classList.remove('active');
-    listImgTitles[activeIndex].classList.remove('active');
-    listImgLocation[activeIndex].classList.remove('active');
-    listThumbs[activeIndex].classList.remove('thumb-active');
-
-    activeIndex++; //! Unica differenza
-    if (activeIndex >= images.length) {
-        activeIndex = 0;
-    }
-
-    listImg[activeIndex].classList.add('active');
-    listImgTitles[activeIndex].classList.add('active');
-    listImgLocation[activeIndex].classList.add('active');
-    listThumbs[activeIndex].classList.add('thumb-active');
-
-    //$ Bonus 1: Aggiorna lo sfondo
-    document.body.style.backgroundImage = `url('img/${images[activeIndex].image}')`;
+//$ Bottone giù
+btnDown.addEventListener('click', function() {
+    clearInterval(autoChangeImages);
+    scrollDirection = "down";
+    changeImages();
+    autoChangeImages = setInterval(changeImages, 3000);
 });
 
 
-
-
-
-
-
-
-
+//% Bonus bottone Pausa / Avvia
+btnPause.addEventListener('click', function() {
+    if (isPaused) {
+        // Se in pausa, avvia l'animazione e cambia il testo del pulsante
+        autoChangeImages = setInterval(changeImages, 3000);
+        btnPause.textContent = 'Pausa';
+        isPaused = false;
+    } else {
+        // Se in esecuzione, metti in pausa l'animazione e cambia il testo del pulsante
+        clearInterval(autoChangeImages);
+        btnPause.textContent = 'Avvia';
+        isPaused = true;
+    }
+});
