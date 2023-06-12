@@ -146,7 +146,7 @@ autoChangeImages = setInterval(changeImages, 3000); //* Inizio scorrimento appen
 btnUp.addEventListener('click', function() {
     clearInterval(autoChangeImages);
     scrollDirection = "up";
-    changeImages();
+    //changeImages();
     autoChangeImages = setInterval(changeImages, 3000);
 });
 
@@ -154,7 +154,7 @@ btnUp.addEventListener('click', function() {
 btnDown.addEventListener('click', function() {
     clearInterval(autoChangeImages);
     scrollDirection = "down";
-    changeImages();
+    //changeImages();
     autoChangeImages = setInterval(changeImages, 3000);
 });
 
@@ -173,3 +173,5 @@ btnPause.addEventListener('click', function() {
         isPaused = true;
     }
 });
+
+
